@@ -1,0 +1,40 @@
+.background{
+  width:100%;
+  height: calc(100% - 60px);
+  background-image: url('/assets/crimsonvow.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size:cover;
+  position: fixed;
+
+}
+.product{
+  height:180px;
+}
+.itemsContainer{
+  margin:auto;
+  padding-top: 4%;
+  width: 80%;
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 20px;
+  row-gap:20px;
+  overflow-y:auto;
+  height: 100%;
+}
+
+.itemContainer{
+  width: 240px;
+  height:310px;
+  padding: 0px;
+  background: white;
+  border-radius: 15px;
+  border: solid darkred;
+  text-align: center;
+  display:block;
+  box-shadow: 0 0 3px darkred, 0 0 5px darkred;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}

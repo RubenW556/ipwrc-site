@@ -1,0 +1,9 @@
+<body class="background">
+<div class="itemsContainer">
+  <div  class="itemContainer" *ngFor="let item of items">
+    <p>{{item.itemName}}</p><br>
+    <img class="product" [src]="item.image"><br>
+    <p>{{item.price}}{{item.id}}</p> <p (click)="addToCart(item.id)"class="button">add to card</p>
+  </div>
+</div>
+</body>

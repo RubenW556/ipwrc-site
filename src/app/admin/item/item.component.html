@@ -1,0 +1,16 @@
+<body class="background">
+<div class=" container">
+  <div class="log-in-square">
+
+    <p class="log-in-header">create new item</p>
+    <input type="file" accept="image/*" class="file-upload" (change)="changeImg($event)"> <br>
+    <img class="preview" [src]="file"> <br>
+    <label>name</label> <br>
+    <input [(ngModel)]="itemName"><br>
+    <label>price</label><br>
+    <input [(ngModel)]="price" (keypress)="numberOnly($event)" ><br>
+    <button (click)="upload()">create item</button>
+  </div>
+</div>
+</body>
+
