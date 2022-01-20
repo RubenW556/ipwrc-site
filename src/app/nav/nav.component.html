@@ -1,0 +1,10 @@
+
+
+<div *ngIf="!noNav.includes(_router.url)">
+  <img src="assets/card.png">
+<ol>
+  <li [routerLink]="['home']">home</li>
+  <li [routerLink]="['shop']" >shop</li>
+  <li [routerLink]="['shoppingcart']" (click)="consolelog()">winkelwagen</li>
+</ol>
+</div>

@@ -1,0 +1,39 @@
+.background{
+  width:100%;
+  height: calc(100% - 60px);
+  background-image: url('/assets/crimsonvow.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size:cover;
+}
+
+.bottom-right-info{
+  position: absolute;
+  bottom: 20%;
+  right: 10%;
+}
+
+.header{
+  color:white;
+  font-size: 50px;
+  font-weight: bold;
+  text-shadow: 0 0 3px black, 0 0 5px black;
+  margin-bottom: 30px;
+}
+
+.body{
+  color:white;
+  font-size: 25px;
+  font-weight: bold;
+  text-shadow: 0 0 3px black, 0 0 5px black;
+  margin-bottom: 40px;
+}
+.button{
+  padding:10px;
+  background: #811414;
+  color: white;
+  border-radius: 5px;
+  font-size: 25px;
+  font-weight: bold;
+  margin-bottom: 35px;
+}
