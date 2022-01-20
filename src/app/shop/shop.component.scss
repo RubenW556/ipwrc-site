@@ -18,23 +18,43 @@
   display: flex;
   flex-wrap: wrap;
   column-gap: 20px;
-  row-gap:20px;
   overflow-y:auto;
   height: 100%;
+}
+.button{
+  padding:10px;
+  background: #811414;
+  color: white;
+  border-radius: 5px;
+  font-size: 25px;
+  font-weight: bold;
+  bottom:0;
+  width: 80%;
+  margin: auto;
+  align-self: center;
 }
 
 .itemContainer{
   width: 240px;
-  height:310px;
+  height:333px;
   padding: 0px;
+  margin:0px;
   background: white;
   border-radius: 15px;
   border: solid darkred;
   text-align: center;
-  display:block;
   box-shadow: 0 0 3px darkred, 0 0 5px darkred;
+  flex: 0 220px 0;
 }
 
 ::-webkit-scrollbar {
   display: none;
+}
+
+.productheader{
+  color:black;
+  font-size: 30px;
+  font-weight: bold;
+  margin:0px;
+  height: 60px;
 }

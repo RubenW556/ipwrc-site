@@ -20,8 +20,18 @@ export class ShopComponent implements OnInit {
   }
 
   addToCart(int: number){
-    localStorage.getItem("winkelwagen");
-
+  let array: string = "";
+    if(localStorage.getItem("winkelwagen")!=null){
+      array = localStorage.getItem("winkelwagen") as string;
+      console.log(array)
+    }
+    if(array !="") {
+      array = array + "," + int;
+    }
+    else{
+      array = int+"";
+    }
+    localStorage.setItem("winkelwagen", array)
   }
 
 }
