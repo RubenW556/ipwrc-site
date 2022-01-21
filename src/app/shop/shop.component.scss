@@ -32,13 +32,14 @@
   width: 80%;
   margin: auto;
   align-self: center;
+  cursor:pointer;
 }
 
 .itemContainer{
   width: 240px;
   height:333px;
-  padding: 0px;
-  margin:0px;
+  padding: 0;
+  margin:0;
   background: white;
   border-radius: 15px;
   border: solid darkred;

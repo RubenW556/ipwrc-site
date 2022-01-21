@@ -13,4 +13,6 @@ export class ShopService {
   constructor(private http: HttpClient) {}
 
   getItems(): Observable<item[]> {return this.http.get<item[]>(environment.serverURL+"/item");}
+
+  getItem(int: number): Observable<item> {return this.http.get<item>(environment.serverURL+"/item/"+int);}
 }

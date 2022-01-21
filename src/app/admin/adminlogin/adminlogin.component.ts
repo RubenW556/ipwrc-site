@@ -16,7 +16,14 @@ export class AdminloginComponent implements OnInit {
   }
   logIn(){
     this.loginService.login(this.username, this.password)
-    if(localStorage.getItem("id_token")){
+    setTimeout(() =>
+        (this.reroute())
+      , 1000)
+
+  }
+
+  reroute(){
+    if(localStorage.getItem("id_token") != null){
       this.router.navigateByUrl('item');
     }
   }

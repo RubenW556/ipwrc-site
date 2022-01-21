@@ -1,0 +1,30 @@
+<body class="background">
+<div class="itemsContainer">
+
+
+  <div class="shoppingcart">
+    <p class="header">winkel wagen</p>
+    <ol>
+      <li class="productbox" *ngFor="let item of items">
+        <img class="product" [src]="item.image">
+        <p class="productheader">{{item.itemName}}</p>
+        <p class="price">  {{item.price}},--</p>
+      </li>
+      <div class="pricebox">
+
+        <div class="placeholder"></div>
+      <p class="priceheader">totaalprijs</p>
+      <p class="totalPrice">  {{totalPrice}},--</p>
+      </div>
+      <p class="button"></p>
+      <div class="buttons">
+      <p class="clearShoppingCart" (click)="clearShoppingCart()">leeg winkelwagen</p>
+      <p *ngIf="loggedIn" class="order" (click)="order()">order</p>
+      <p *ngIf="!loggedIn" class="notOrder">don't order</p>
+      </div>
+    </ol>
+
+  </div>
+
+</div>
+</body>

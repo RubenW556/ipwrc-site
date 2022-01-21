@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {tap} from "rxjs";
 import {environment} from "../../../environments/environment";
 
 
@@ -10,7 +9,7 @@ import {environment} from "../../../environments/environment";
 export class LoginService {
   constructor(private http: HttpClient) {}
 
-  login (username: String, password: String) {
+  async login (username: String, password: String) {
     let data: String = "{\"username\":\""+username+"\",\"password\":\""+password+"\"}"
     this.logout();
     this.http.post(environment.serverURL + "/login", data, {responseType: 'text'})

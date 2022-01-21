@@ -11,6 +11,7 @@ import {AdminModule} from "./admin/admin.module";
 import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {ShopModule} from "./shop/shop.module";
+import {WinkelwagenModule} from "./winkelwagen/winkelwagen.module";
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import {ShopModule} from "./shop/shop.module";
     AdminModule,
     FormsModule,
     HttpClientModule,
-    ShopModule
+    ShopModule,
+    WinkelwagenModule
   ],
   providers: [],
   bootstrap: [AppComponent]
