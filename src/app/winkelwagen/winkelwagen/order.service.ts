@@ -7,10 +7,13 @@ import {Observable} from "rxjs";
 @Injectable({
   providedIn: 'root'
 })
-export class ShopService {
+export class OrderService {
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+  }
 
-
-
+  async order(number: Number[]) {
+    this.http.post(environment.serverURL + "/order", number, {responseType: 'text'})
+      .subscribe()
+  }
 }

@@ -1,12 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {AdminloginComponent} from "./adminlogin/adminlogin.component";
-import {ItemComponent} from "./item/item.component";
+import {AdminComponent} from "./admin/admin.component";
 
 const routes: Routes = [
-  {path: "login", component: AdminloginComponent},
-  {path: 'admin',   redirectTo: '/login', pathMatch: 'full' },
-  {path: "item", component: ItemComponent}
+  {path: "item", component: AdminComponent}
 ];
 
 @NgModule({

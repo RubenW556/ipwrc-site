@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {item} from "../../models/item";
 import {ShopService} from "../../shop/shop.service";
+import {OrderService} from "./order.service";
 
 @Component({
   selector: 'app-winkelwagen',
@@ -15,7 +16,7 @@ export class WinkelwagenComponent implements OnInit {
   public totalPrice: number= 0;
 
 
-  constructor(private shopService: ShopService) {
+  constructor(private shopService: ShopService, private orderService: OrderService) {
     let string = localStorage.getItem("winkelwagen") as string;
     if(string!=null) {
       this.ids = string.split(',').map(function (item) {
@@ -25,7 +26,6 @@ export class WinkelwagenComponent implements OnInit {
       for (let i = 0; i < this.ids.length; i++) {
         this.shopService.getItem(this.ids[i]).subscribe((data) => {
           temp[i] = data;
-          console.log(data);
           this.items = temp;
           this.totalPrice = this.totalPrice + temp[i].price;
         });
@@ -34,7 +34,6 @@ export class WinkelwagenComponent implements OnInit {
     if(localStorage.getItem("id_token")!=null){
       this.loggedIn = true;
     }
-
   }
 
 
@@ -46,7 +45,7 @@ export class WinkelwagenComponent implements OnInit {
   }
 
   order(){
-
+    this.orderService.order(this.ids);
   }
 
 }

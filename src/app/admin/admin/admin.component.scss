@@ -1,0 +1,26 @@
+@import "src/app/app.component.scss";
+
+.log-in-square{
+  width: 400px;
+  height:400px;
+  margin: auto;
+  @include square;
+}
+.container{
+  padding-top: 14%;
+}
+
+.log-in-header{
+  @include header;
+}
+
+label{
+  font-family: "Sitka Small";
+}
+input{
+  margin-bottom:10px;
+}
+
+.preview{
+  height:100px;
+}

@@ -8,7 +8,7 @@ import {Router} from "@angular/router";
 })
 export class NavComponent implements OnInit {
 
-  noNav = ['/login', '/item', '/orders'];
+  noNav = ['yeeees'];
 
   constructor(public _router: Router) {}
 

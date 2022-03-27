@@ -2,11 +2,12 @@
   <div class=" container">
   <div class="log-in-square">
 
-    <p class="log-in-header">log in to admin</p>
+    <p class="log-in-header">log in to account</p>
     <label>username</label> <br>
     <input [(ngModel)]="username"><br>
     <label >password</label><br>
     <input type="password" [(ngModel)]="password" ><br>
+    <p class="RegisterTip" (click)="toRegister()">No account? register here</p>
     <button (click)="logIn()">log-in</button>
   </div>
   </div>

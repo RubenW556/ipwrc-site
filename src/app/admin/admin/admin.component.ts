@@ -1,21 +1,21 @@
 import { Component, OnInit } from '@angular/core';
-import {ItemService} from "./item.service";
+import {AdminService} from "./admin.service";
 
 @Component({
-  selector: 'app-item',
-  templateUrl: './item.component.html',
-  styleUrls: ['./item.component.scss']
+  selector: 'app-admin',
+  templateUrl: './admin.component.html',
+  styleUrls: ['./admin.component.scss']
 })
 
 
-export class ItemComponent implements OnInit {
+export class AdminComponent implements OnInit {
 
   public itemName: String= "";
   public price: number= 0;
   public file: string;
 
 
-  constructor(private itemService:ItemService) { }
+  constructor(private itemService:AdminService) { }
 
   ngOnInit(): void {
   }

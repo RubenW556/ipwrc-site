@@ -1,0 +1,29 @@
+@import "src/app/app.component.scss";
+
+.log-in-square{
+  @include square;
+  width: 400px;
+  height:280px;
+  margin: auto;
+}
+.container{
+  padding-top: 14%;
+}
+
+.log-in-header{
+  @include header
+}
+
+label{
+  font-family: "Sitka Small";
+}
+input{
+  margin-bottom:10px;
+}
+
+.RegisterTip{
+  margin:0;
+  cursor: pointer;
+  color: 	#0645AD;
+  text-underline: 	#0645AD;
+}
