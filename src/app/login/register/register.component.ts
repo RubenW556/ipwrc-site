@@ -26,6 +26,12 @@ export class RegisterComponent implements OnInit {
       , 1000)
   }
 
+  sanitizeInput(event: any): boolean {
+    const charCode = (event.which) ? event.which : event.code;
+    const validCharacters = String.fromCharCode(charCode).match(/[a-zA-Z0-9@._ ]+$/);
+    return validCharacters !== null && validCharacters.length > 0;
+  }
+
   toLogIn(){
     this.router.navigateByUrl('login');
   }

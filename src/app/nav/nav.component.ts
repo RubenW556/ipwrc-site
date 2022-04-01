@@ -13,11 +13,9 @@ export class NavComponent implements OnInit {
   constructor(public _router: Router) {}
 
   ngOnInit(): void {
-    console.log("yes")
   }
 
   consolelog(){
-    console.log("yes")
   }
 
 }

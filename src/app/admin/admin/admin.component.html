@@ -1,15 +1,53 @@
 <body class="background">
+
+
 <div class=" container">
   <div class="log-in-square">
-
     <p class="log-in-header">create new item</p>
     <input type="file" accept="image/*" class="file-upload" (change)="changeImg($event)"> <br>
     <img class="preview" [src]="file"> <br>
     <label>name</label> <br>
-    <input [(ngModel)]="itemName"><br>
+    <input (keypress)="sanitizeInput($event)" [(ngModel)]="itemName"><br>
     <label>price</label><br>
     <input [(ngModel)]="price" (keypress)="numberOnly($event)" ><br>
     <button (click)="upload()">create item</button>
+  </div>
+
+  <div *ngIf="itemsLooking">
+      <div  class="pop-out">
+        <p class="header">items in order</p>
+        <ol *ngFor="let item of items">
+          <li class="productbox" >
+            <img class="product" [src]="item.image">
+            <p class="productheader">{{item.itemName}}</p>
+          </li>
+        </ol>
+        <button class="closeButton" (click)="closePopout()">close</button>
+      </div>
+  </div>
+
+  <div class="orderContainer">
+    <ol class="orderList">
+      <li class="orderHeader" >
+        <p class="id">  order id</p>
+        <p class="price">  order price </p>
+        <p class="username">  username</p>
+      </li>
+      <li class="order"  *ngFor="let order of orders">
+        <p class="id">  {{order.id}}</p>
+        <p class="price">  {{order.price}},--</p>
+        <p class="username">  {{order.username}}</p>
+
+        <select class="select" [ngModel]="order.orderstatus" (ngModelChange)="onChange($event, order.id)" name="deviceText">
+          <option value="PROCESSED">PROCESSED</option>
+          <option value="UNDERWAY">UNDERWAY</option>
+          <option  value="DELIVERED">DELIVERED</option>
+        </select>
+
+        <p class="products" (click)="showProducts(order)">  producten</p>
+      </li>
+
+    </ol>
   </div>
 </div>
 </body>

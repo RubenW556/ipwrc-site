@@ -4,7 +4,8 @@
 
   <div class="shoppingcart">
     <p class="header">winkel wagen</p>
-    <ol>
+    <p *ngIf="empty" class="error"> uw winkelwagen is leeg </p>
+    <ol class="itemList" *ngIf="!empty">
       <li class="productbox" *ngFor="let item of items">
         <img class="product" [src]="item.image">
         <p class="productheader">{{item.itemName}}</p>
@@ -19,8 +20,8 @@
       <p class="button"></p>
       <div class="buttons">
       <p class="clearShoppingCart" (click)="clearShoppingCart()">leeg winkelwagen</p>
-      <p *ngIf="loggedIn" class="order" (click)="order()">order</p>
-      <p *ngIf="!loggedIn" class="notOrder">don't order</p>
+      <p *ngIf="isCustomer" class="order" (click)="order()">order</p>
+      <p *ngIf="!isCustomer" class="order" (click)="toLogIn()">log-in</p>
       </div>
 
     </ol>

@@ -3,11 +3,24 @@
 .log-in-square{
   width: 400px;
   height:400px;
-  margin: auto;
+  margin: auto 100px auto auto;
   @include square;
+  }
+
+
+.orderContainer{
+  width: 800px;
+  height:400px;
+  margin-left: 100px;
+  margin-right: auto;
+  @include square;
+  overflow-y: scroll;
 }
 .container{
   padding-top: 14%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .log-in-header{
@@ -23,4 +36,149 @@ input{
 
 .preview{
   height:100px;
+}
+
+.orderList{
+  padding-left: 0;
+  margin-left: 20px;
+  row-gap: 20px;
+}
+
+.order{
+  padding-left: 0;
+  display: flex;
+  height:60px;
+  column-gap: 14px;
+}
+
+.price{
+  width: 90px;
+  font-size: 25px;
+  font-family: "Sitka Small";
+}
+
+.username{
+  font-size: 20px;
+  font-family: "Sitka Small";
+  margin-top: 15px;
+  width: 400px;
+}
+
+@mixin text{
+  font-size: 18px;
+  font-family: "Sitka Small";
+  margin-top: 15px;
+}
+
+.id{
+  @include text;
+  width: 60px;
+}
+.price{
+  @include text;
+  width: 80px;
+}
+
+.username{
+  @include text;
+  width: 250px;
+}
+.username{
+  @include text;
+  width: 250px;
+}
+.products{
+  @include text;
+  width: 100px;
+}
+
+.select{
+  height:30px;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.orderHeader{
+  padding-left: 0;
+  display: flex;
+  height:70px;
+  column-gap: 14px;
+  background: grey;
+  border-radius: 10px;
+  width:97%;
+}
+
+
+.pop-out{
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-right: auto;
+  margin-left: auto;
+  width: 600px;
+  height:600px;
+  @include square;
+  top:250px;
+  overflow-y: scroll;
+}
+
+.shoppingcart{
+  @include square;
+  width: 800px;
+  margin: auto;
+  overflow-y: scroll;
+  height:800px;
+}
+
+.product{
+  height: 100px;
+}
+.productbox{
+  display: flex;
+  height:100px;
+  row-gap:  10px;
+}
+
+.productheader{
+  font-size: 30px;
+  margin: auto;
+}
+
+button{
+  padding:10px;
+  background: #811414;
+  color: white;
+  border-radius: 5px;
+  font-size: 25px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+.closeButton{
+  margin-bottom: 20px;
+}
+
+.pop-out::-webkit-scrollbar {
+  display: none;
+}
+
+.orderContainer::-webkit-scrollbar {
+  display: none;
+}
+
+.order{
+  border-bottom: grey solid;
+  width: 97%;
+}
+
+.order:last-child{
+  width: 97%;
+}
+
+
+select{
+  height: 20px;
+}
+
+.header{
+  font-size: 40px;
 }

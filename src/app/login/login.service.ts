@@ -2,6 +2,8 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../environments/environment";
 import {account} from "../models/account";
+import {CookieService} from "ngx-cookie-service";
+import {lastValueFrom} from "rxjs";
 
 
 @Injectable({
@@ -14,13 +16,19 @@ export class LoginService {
     let data: String = "{\"username\":\""+username+"\",\"password\":\""+password+"\"}";
     this.logout();
     this.http.post(environment.serverURL + "/login", data, {responseType: 'text'})
-      .subscribe(data =>  this.setSession(data))
+      .subscribe(data =>  this.setSession(data)
+      );
+
   }
 
   async register(newAccount: account){
-    this.http.post(environment.serverURL + "/user", newAccount, {responseType: 'text'})
-      .subscribe()
+    const data$ = this.http.post(environment.serverURL + "/user", newAccount, {responseType: 'text'});
+    await lastValueFrom(data$);
+//      .subscribe(data=>{
+
   }
+
+
 
   logout() {
     localStorage.removeItem("id_token")

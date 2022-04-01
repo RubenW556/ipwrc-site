@@ -14,6 +14,7 @@
   margin:auto;
   padding-top: 7%;
   width: 80%;
+  height: calc(100% - 30px);
 }
 .header{
   @include header;
@@ -27,7 +28,7 @@
   width: 800px;
   margin: auto;
   overflow-y: scroll;
-  height:800px;
+  height:70%;
 }
 
 
@@ -46,20 +47,19 @@
 .productbox{
   display: flex;
   height:100px;
-  row-gap:  10px;
 }
 
-.productheader{
-  font-size: 30px;
-  margin: auto;
-}
 
 .price{
   width: 100px;
   font-size: 30px;
   margin-top: auto;
-  margin-bottom:  auto;
+  margin-bottom: auto;
   margin-right: 30px;
+}
+
+.itemList{
+  row-gap: 40px;
 }
 
 .totalPrice{
@@ -77,6 +77,11 @@
   font-size: 30px;
   margin: auto;
   width: 100px;
+}
+.productheader{
+  width: 100px;
+  font-size: 30px;
+  margin: auto;
 }
 
 .placeholder{
@@ -119,4 +124,8 @@
 .buttons{
   display: flex;
   justify-content: space-evenly;
+}
+
+.error{
+  font-size: 40px;
 }

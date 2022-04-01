@@ -11,7 +11,8 @@
 }
 
 .log-in-header{
-  @include header
+  @include header;
+  margin-top: 0;
 }
 
 label{

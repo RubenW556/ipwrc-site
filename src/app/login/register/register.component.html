@@ -1,16 +1,17 @@
 <body class="background">
   <div class=" container">
   <div class="log-in-square">
-
-    <p class="log-in-header">make a new account</p>
-    <label>username</label> <br>
-    <input [(ngModel)]="username"><br>
-    <label >password</label><br>
-    <input type="password" [(ngModel)]="password" ><br>
-    <label >email</label><br>
-    <input type="password" [(ngModel)]="email" ><br>
-    <p class="RegisterTip" (click)="toLogIn()">Already have an account? click here</p>
-    <button (click)="register()">register</button>
+    <form>
+      <p class="log-in-header">make a new account</p>
+      <label >username</label> <br>
+      <input (keypress)="sanitizeInput($event)" [(ngModel)]="username"><br>
+      <label> password</label><br>
+      <input type="password" [(ngModel)]="password" ><br>
+      <label> email</label><br>
+      <input (keypress)="sanitizeInput($event)" [(ngModel)]="email" ><br>
+      <p class="RegisterTip" (click)="toLogIn()">Already have an account? click here</p>
+      <button (click)="register()">register</button>
+    </form>
   </div>
   </div>
 </body>

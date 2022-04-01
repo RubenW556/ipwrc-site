@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {item} from "../../models/item";
 import {ShopService} from "../../shop/shop.service";
-import {OrderService} from "./order.service";
+import {WinkelWagenService} from "../winkel-wagen.service";
+import {Router} from "@angular/router";
+import {CookieService} from "ngx-cookie-service";
+
 
 @Component({
   selector: 'app-winkelwagen',
@@ -11,41 +14,80 @@ import {OrderService} from "./order.service";
 export class WinkelwagenComponent implements OnInit {
 
   public items: item[];
-  public ids: number[];
-  public loggedIn: boolean = true;
-  public totalPrice: number= 0;
+  public totalPrice: number = 0;
+  public isCustomer: boolean;
+  public empty: boolean = false;
 
 
-  constructor(private shopService: ShopService, private orderService: OrderService) {
-    let string = localStorage.getItem("winkelwagen") as string;
-    if(string!=null) {
-      this.ids = string.split(',').map(function (item) {
-        return parseInt(item);
-      });
-      let temp: item [] = new Array(this.ids.length)
-      for (let i = 0; i < this.ids.length; i++) {
-        this.shopService.getItem(this.ids[i]).subscribe((data) => {
-          temp[i] = data;
-          this.items = temp;
-          this.totalPrice = this.totalPrice + temp[i].price;
+  constructor(private shopService: ShopService, private winkelWagenService: WinkelWagenService, private _router: Router, private cookieService: CookieService) {
+    this.isCustomer = localStorage.getItem("role") == "ROLE_CUSTOMER";
+    let data: number[] = [];
+    if (this.isCustomer) {
+      if(this.cookieService.get("shoppingcart")!=""){
+        this.winkelWagenService.overrideCart()
+        this.loadFromCookie()
+        this.cookieService.delete("shoppingcart")
+      }
+      else {
+        winkelWagenService.getShoppingCart().subscribe((received) => {
+          if (received.length == 0) {
+            this.empty = true;
+          }
+          this.loadItems(received)
         });
       }
     }
-    if(localStorage.getItem("id_token")!=null){
-      this.loggedIn = true;
+    else{
+      this.loadFromCookie()
     }
   }
 
-
-  ngOnInit(): void {
+  ngOnInit():
+    void {
   }
 
-  clearShoppingCart(){
-    localStorage.removeItem("winkelwagen")
+  clearShoppingCart() {
+    if(this.isCustomer) {
+      this.winkelWagenService.clearShoppingCart()
+    }
+    else{
+      this.cookieService.delete("shoppingcart");
+    }
+    this.empty = true;
   }
 
-  order(){
-    this.orderService.order(this.ids);
+  order() {
+    this.winkelWagenService.order()
+    this._router.navigateByUrl("done")
   }
 
+  toLogIn(){
+    this.cookieService.set("shop-log", "0")
+    this._router.navigateByUrl("login")
+  }
+
+  loadItems(data: number[]) {
+    let temp: item [] = new Array(data.length);
+    for (let i = 0; i < data.length; i++) {
+      this.shopService.getItem(data[i]).subscribe((data) => {
+        temp[i] = data;
+        this.items = temp;
+        this.totalPrice = this.totalPrice + temp[i].price;
+      });
+    }
+  }
+
+  loadFromCookie(){
+  if (this.cookieService.get("shoppingcart") == "") {
+  this.empty = true;
+} else {
+  let data: number[] = this.cookieService.get("shoppingcart").split(",").map(function (item) {
+    return parseInt(item, 10);
+  });
+  //removes faulty element from cookie
+  data.splice(-1, 1)
+
+  this.loadItems(data)
+}
+}
 }

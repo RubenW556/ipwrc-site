@@ -1,6 +1,9 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
+import {Observable} from "rxjs";
+import {item} from "../../models/item";
+import {order} from "../../models/order";
 
 
 @Injectable({
@@ -16,6 +19,16 @@ export class AdminService {
     let item: String = "{\"itemName\":\""+name+"\",\"price\":\""+price+"\",\"image\":\""+data+"\"}"
     return this.http.post(environment.serverURL + "/item", item, this.httpOptions)
       .subscribe()
+  }
+
+  getOrders(): Observable<order[]> {
+    return this.http.get<order[]>(environment.serverURL + "/order", this.httpOptions
+    );
+  }
+
+  changeOrder(id: number, status:string ){
+    return this.http.post(environment.serverURL + "/order/"+id+"?orderStatus="+status, null, this.httpOptions
+    ).subscribe();
   }
 
 }
