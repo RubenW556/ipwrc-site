@@ -3,24 +3,45 @@
 .log-in-square{
   width: 400px;
   height:400px;
-  margin: auto 100px auto auto;
+  margin: auto;
   @include square;
-  }
+}
 
+.item-list-square{
+  width: 800px;
+  height:400px;
+  margin: auto;
+  @include square;
+  overflow-y: scroll;
+}
+
+.edit{
+  margin: auto 20px;
+  padding:0px;
+  width:60px;
+  height:40px;
+}
+.item-list-square .price{
+  margin:auto;
+}
 
 .orderContainer{
   width: 800px;
   height:400px;
-  margin-left: 100px;
-  margin-right: auto;
   @include square;
   overflow-y: scroll;
 }
+
 .container{
-  padding-top: 14%;
+  height: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
+  column-gap: 40px;
+  flex-wrap: wrap;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  row-gap: 50px;
 }
 
 .log-in-header{
@@ -136,12 +157,12 @@ input{
 .productbox{
   display: flex;
   height:100px;
-  row-gap:  10px;
 }
 
 .productheader{
   font-size: 30px;
   margin: auto;
+  width:400px
 }
 
 button{
@@ -164,6 +185,9 @@ button{
 .orderContainer::-webkit-scrollbar {
   display: none;
 }
+.item-list-square::-webkit-scrollbar {
+  display: none;
+}
 
 .order{
   border-bottom: grey solid;
@@ -181,4 +205,9 @@ select{
 
 .header{
   font-size: 40px;
+}
+
+.background{
+  height: auto;
+  min-height: calc(100% - 60px);
 }

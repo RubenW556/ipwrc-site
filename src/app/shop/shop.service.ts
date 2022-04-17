@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {environment} from "../../environments/environment";
-import {item} from "../models/item";
+import {Item} from "../models/item";
 import {Observable} from "rxjs";
 
 
@@ -12,7 +12,7 @@ export class ShopService {
 
   constructor(private http: HttpClient) {}
 
-  getItems(): Observable<item[]> {return this.http.get<item[]>(environment.serverURL+"/item");}
+  getItems(): Observable<Item[]> {return this.http.get<Item[]>(environment.serverURL+"/item");}
 
-  getItem(int: number): Observable<item> {return this.http.get<item>(environment.serverURL+"/item/"+int);}
+  getItem(int: number): Observable<Item> {return this.http.get<Item>(environment.serverURL+"/item/"+int);}
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {item} from "../../models/item";
+import {Item} from "../../models/item";
 import {ShopService} from "../../shop/shop.service";
 import {WinkelWagenService} from "../winkel-wagen.service";
 import {Router} from "@angular/router";
@@ -13,7 +13,7 @@ import {CookieService} from "ngx-cookie-service";
 })
 export class WinkelwagenComponent implements OnInit {
 
-  public items: item[];
+  public items: Item[];
   public totalPrice: number = 0;
   public isCustomer: boolean;
   public empty: boolean = false;
@@ -67,7 +67,7 @@ export class WinkelwagenComponent implements OnInit {
   }
 
   loadItems(data: number[]) {
-    let temp: item [] = new Array(data.length);
+    let temp: Item [] = new Array(data.length);
     for (let i = 0; i < data.length; i++) {
       this.shopService.getItem(data[i]).subscribe((data) => {
         temp[i] = data;

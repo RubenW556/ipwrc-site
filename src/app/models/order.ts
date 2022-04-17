@@ -1,4 +1,4 @@
-import {item} from "./item";
+import {Item} from "./item";
 
 export class order{
   items: number[];

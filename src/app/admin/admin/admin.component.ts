@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {AdminService} from "./admin.service";
 import {order} from "../../models/order";
 import {ShopService} from "../../shop/shop.service";
-import {item} from "../../models/item";
+import {Item} from "../../models/item";
 
 @Component({
   selector: 'app-admin',
@@ -13,11 +13,14 @@ import {item} from "../../models/item";
 
 export class AdminComponent implements OnInit {
 
-  public itemName: String= "";
-  public price: number= 0;
-  public file: string;
+
+  public item: Item = {} as Item;
   public itemsLooking: boolean = false;
-  public items: item[];
+  public orderItems: Item[];
+  public items: Item[];
+
+  public edit: boolean = false;
+  public editItem: Item;
 
   public orders: order[];
 
@@ -27,7 +30,23 @@ export class AdminComponent implements OnInit {
     this.adminService.getOrders().subscribe((data) => {
       this.orders= data;
     })
+    this.shopService.getItems().subscribe((data) => {
+      this.items= data;
+    })
 
+  }
+
+  editThisItem(item:  Item){
+    this.editItem = item;
+    this.edit = true;
+  }
+
+  uploadEdit(){
+    this.adminService.upload(this.editItem)
+    this.edit = false;
+  }
+  exitEdit(){
+    this.edit = false;
   }
 
   numberOnly(event: any): boolean {
@@ -44,16 +63,26 @@ export class AdminComponent implements OnInit {
   }
 
   changeImg(e: any){
+    var read = new FileReader();
+    read.onload = (e) => {
+      this.item.image =  read.result as string;
+    }
+    read.readAsDataURL(e.target.files[0])
+  }
+
+  changeEditImg(e: any){
     console.log(e);
     var read = new FileReader();
     read.onload = (e) => {
-      this.file =  read.result as string;
+      this.editItem.image =  read.result as string;
     }
     read.readAsDataURL(e.target.files[0])
   }
 
   upload(){
-    this.adminService.upload(this.itemName, this.price, this.file)
+    if(this.item.image!=null &&this.item.itemName!=null &&this.item.price!=null) {
+      this.adminService.upload(this.item)
+    }
   }
 
   onChange(status:string, id:number){
@@ -71,11 +100,11 @@ export class AdminComponent implements OnInit {
   }
 
   putItems(data: number[]){
-    let temp: item [] = new Array(data.length);
+    let temp: Item [] = new Array(data.length);
     for (let i = 0; i < data.length; i++) {
       this.shopService.getItem(data[i]).subscribe((data) => {
         temp[i] = data;
-        this.items = temp;
+        this.orderItems = temp;
       });
     }
   }

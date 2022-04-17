@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ShopService} from "./shop.service";
-import {item} from "../models/item";
+import {Item} from "../models/item";
 import {WinkelWagenService} from "../winkelwagen/winkel-wagen.service";
 import {Router} from "@angular/router";
 import {CookieService} from "ngx-cookie-service";
@@ -14,7 +14,7 @@ import {CookieService} from "ngx-cookie-service";
 
 
 export class ShopComponent implements OnInit {
-  public items: item[];
+  public items: Item[];
   public isCustomer: boolean;
 
   constructor(private shopService: ShopService, private winkelwagenService: WinkelWagenService, private _router: Router, private cookieService: CookieService) {

@@ -11,6 +11,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {ShopModule} from "./shop/shop.module";
 import {WinkelwagenModule} from "./winkelwagen/winkelwagen.module";
 import {LoginModule} from "./login/login.module";
+import {notFoundRoutingModule} from "./not-found/not-found.routing";
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import {LoginModule} from "./login/login.module";
     HttpClientModule,
     ShopModule,
     WinkelwagenModule,
-    LoginModule
+    LoginModule,
+    notFoundRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

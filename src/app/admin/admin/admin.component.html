@@ -2,21 +2,44 @@
 
 
 <div class=" container">
-  <div class="log-in-square">
-    <p class="log-in-header">create new item</p>
-    <input type="file" accept="image/*" class="file-upload" (change)="changeImg($event)"> <br>
-    <img class="preview" [src]="file"> <br>
+    <div *ngIf="!edit" class="log-in-square">
+      <p class="log-in-header">create new item</p>
+      <input type="file" accept="image/*" class="file-upload" (change)="changeImg($event)"> <br>
+      <img class="preview" [src]="item.image"> <br>
+      <label>name</label> <br>
+      <input (keypress)="sanitizeInput($event)" [(ngModel)]="item.itemName"><br>
+      <label>price</label><br>
+      <input [(ngModel)]="item.price" (keypress)="numberOnly($event)" ><br>
+      <button (click)="upload()">create item</button>
+    </div>
+
+  <div *ngIf="edit" class="log-in-square">
+    <p class="log-in-header">edit item</p>
+    <input type="file" accept="image/*" class="file-upload" (change)="changeEditImg($event)"> <br>
+    <img class="preview" [src]="editItem.image"> <br>
     <label>name</label> <br>
-    <input (keypress)="sanitizeInput($event)" [(ngModel)]="itemName"><br>
+    <input (keypress)="sanitizeInput($event)" [(ngModel)]="editItem.itemName"><br>
     <label>price</label><br>
-    <input [(ngModel)]="price" (keypress)="numberOnly($event)" ><br>
-    <button (click)="upload()">create item</button>
+    <input [(ngModel)]="editItem.price" (keypress)="numberOnly($event)" ><br>
+    <button class="edit-selection" (click)="uploadEdit()">edit item</button>
+    <button class="edit-selection" (click)="exitEdit()">exit edit</button>
+  </div>
+
+  <div class="item-list-square">
+    <ol class="itemList">
+      <li class="productbox" *ngFor="let item of items">
+        <img class="product" [src]="item.image">
+        <p class="productheader">{{item.itemName}}</p>
+        <p class="price">  {{item.price}},--</p>
+        <button (click)="editThisItem(item)" class="edit">  edit </button>
+      </li>
+    </ol>
   </div>
 
   <div *ngIf="itemsLooking">
       <div  class="pop-out">
         <p class="header">items in order</p>
-        <ol *ngFor="let item of items">
+        <ol *ngFor="let item of orderItems">
           <li class="productbox" >
             <img class="product" [src]="item.image">
             <p class="productheader">{{item.itemName}}</p>

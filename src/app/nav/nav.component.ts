@@ -8,7 +8,7 @@ import {Router} from "@angular/router";
 })
 export class NavComponent implements OnInit {
 
-  noNav = ['yeeees'];
+  noNav = ['none'];
 
   constructor(public _router: Router) {}
 
