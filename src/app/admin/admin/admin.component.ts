@@ -49,6 +49,12 @@ export class AdminComponent implements OnInit {
     this.edit = false;
   }
 
+  updateItems(){
+    this.shopService.getItems().subscribe((data) => {
+      this.items= data;
+    })
+  }
+
   deleteItem(id:number){
     this.shopService.deleteItem(id);
     this.edit = false;
@@ -86,7 +92,11 @@ export class AdminComponent implements OnInit {
 
   upload(){
     if(this.item.image!=null &&this.item.itemName!=null &&this.item.price!=null) {
-      this.adminService.upload(this.item)
+      this.adminService.upload(this.item).subscribe((data) =>
+        this.shopService.getItems().subscribe((data) => {
+          this.items= data;
+        })
+      )
     }
   }
 

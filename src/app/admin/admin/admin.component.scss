@@ -177,6 +177,11 @@ button{
 .closeButton{
   margin-bottom: 20px;
 }
+.product{
+  height:100px;
+  max-width: 100px;
+  object-fit: contain;
+}
 
 .pop-out::-webkit-scrollbar {
   display: none;

@@ -17,7 +17,6 @@ export class AdminService {
 
   upload (item: Item) {
     return this.http.post(environment.serverURL + "/item", item, this.httpOptions)
-      .subscribe()
   }
 
   uploadEdit (item: Item) {
