@@ -19,10 +19,6 @@ export class AdminService {
     return this.http.post(environment.serverURL + "/item", item, this.httpOptions)
   }
 
-  uploadEdit (item: Item) {
-    return this.http.post(environment.serverURL + "/item", item, this.httpOptions)
-      .subscribe()
-  }
 
   getOrders(): Observable<order[]> {
     return this.http.get<order[]>(environment.serverURL + "/order", this.httpOptions

@@ -37,12 +37,17 @@ export class AdminComponent implements OnInit {
   }
 
   editThisItem(item:  Item){
-    this.editItem = item;
+    this.editItem = JSON.parse(JSON.stringify(item));
     this.edit = true;
+
   }
 
   uploadEdit(){
-    this.adminService.upload(this.editItem)
+    this.adminService.upload(this.editItem).subscribe((data) =>
+      this.shopService.getItems().subscribe((data) => {
+        this.items= data;
+      })
+    )
     this.edit = false;
   }
   exitEdit(){
