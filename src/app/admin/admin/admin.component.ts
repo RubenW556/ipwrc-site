@@ -49,6 +49,12 @@ export class AdminComponent implements OnInit {
     this.edit = false;
   }
 
+  deleteItem(id:number){
+    this.shopService.deleteItem(id);
+    this.edit = false;
+    this.items.splice(this.items.indexOf(this.editItem), 1)
+  }
+
   numberOnly(event: any): boolean {
     const charCode = (event.which) ? event.which : event.code;
     const isNumber = !(charCode > 31 && (charCode < 48 || charCode > 57));
@@ -71,7 +77,6 @@ export class AdminComponent implements OnInit {
   }
 
   changeEditImg(e: any){
-    console.log(e);
     var read = new FileReader();
     read.onload = (e) => {
       this.editItem.image =  read.result as string;
@@ -96,7 +101,6 @@ export class AdminComponent implements OnInit {
 
   closePopout(){
     this.itemsLooking = false;
-    console.log(this.itemsLooking);
   }
 
   putItems(data: number[]){

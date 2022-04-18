@@ -15,4 +15,6 @@ export class ShopService {
   getItems(): Observable<Item[]> {return this.http.get<Item[]>(environment.serverURL+"/item");}
 
   getItem(int: number): Observable<Item> {return this.http.get<Item>(environment.serverURL+"/item/"+int);}
+
+  deleteItem(int: number): void {this.http.delete<Item>(environment.serverURL+"/item/"+int).subscribe();}
 }

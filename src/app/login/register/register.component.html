@@ -2,9 +2,10 @@
   <div class=" container">
   <div class="log-in-square">
     <form>
-      <p class="log-in-header">make a new account</p>
+      <p class="log-in-header">make a new account </p>
       <label >username</label> <br>
       <input (keypress)="sanitizeInput($event)" [(ngModel)]="username"><br>
+      <p *ngIf="alreadyExists" class="alreadyExists">account name already exists</p>
       <label> password</label><br>
       <input type="password" [(ngModel)]="password" ><br>
       <label> email</label><br>

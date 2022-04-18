@@ -12,6 +12,7 @@ export class RegisterComponent implements OnInit {
   public username: string = "";
   public password: string = "";
   public email: string = "";
+  public alreadyExists: boolean = false;
   constructor(private loginService: LoginService, private router: Router) { }
 
   ngOnInit(): void {
@@ -21,9 +22,13 @@ export class RegisterComponent implements OnInit {
     let newAccount: account = new account(this.username, this.password, this.email);
 
     this.loginService.register(newAccount)
-    setTimeout(() =>
-        (this.toLogIn())
-      , 1000)
+      .then((success) =>{
+        this.toLogIn()
+      })
+      .catch((error) =>{
+    this.alreadyExists = true;
+    })
+
   }
 
   sanitizeInput(event: any): boolean {
@@ -35,4 +40,5 @@ export class RegisterComponent implements OnInit {
   toLogIn(){
     this.router.navigateByUrl('login');
   }
+
 }

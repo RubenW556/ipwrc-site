@@ -24,8 +24,6 @@ export class LoginService {
   async register(newAccount: account){
     const data$ = this.http.post(environment.serverURL + "/user", newAccount, {responseType: 'text'});
     await lastValueFrom(data$);
-//      .subscribe(data=>{
-
   }
 
 

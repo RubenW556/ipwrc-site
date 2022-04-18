@@ -23,6 +23,7 @@
     <input [(ngModel)]="editItem.price" (keypress)="numberOnly($event)" ><br>
     <button class="edit-selection" (click)="uploadEdit()">edit item</button>
     <button class="edit-selection" (click)="exitEdit()">exit edit</button>
+    <button class="edit-selection" (click)="deleteItem(editItem.id)">delete item</button>
   </div>
 
   <div class="item-list-square">
